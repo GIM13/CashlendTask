@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31321.278
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashlendTask", "CashlendTask.csproj", "{5A16A247-23B1-4C2D-887F-AF0AB13AB312}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Countries", "Countries.csproj", "{3007189C-6976-4827-B9FC-3EF35F48CB85}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5A16A247-23B1-4C2D-887F-AF0AB13AB312}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5A16A247-23B1-4C2D-887F-AF0AB13AB312}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5A16A247-23B1-4C2D-887F-AF0AB13AB312}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5A16A247-23B1-4C2D-887F-AF0AB13AB312}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3007189C-6976-4827-B9FC-3EF35F48CB85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3007189C-6976-4827-B9FC-3EF35F48CB85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3007189C-6976-4827-B9FC-3EF35F48CB85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3007189C-6976-4827-B9FC-3EF35F48CB85}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {CEEF5DDE-3EA5-4C7B-A04D-F9AB394784E4}
+		SolutionGuid = {D71A89A3-6600-473B-99A8-D29014118A90}
 	EndGlobalSection
 EndGlobal
