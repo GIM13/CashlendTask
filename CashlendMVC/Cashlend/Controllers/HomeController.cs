@@ -1,4 +1,4 @@
-﻿using Countries.Models;
+﻿using Cashlend.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -7,7 +7,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Countries.Controllers
+namespace Cashlend.Controllers
 {
     public class HomeController : Controller
     {
@@ -23,7 +23,7 @@ namespace Countries.Controllers
             return View();
         }
 
-        public IActionResult Search()
+        public IActionResult Privacy()
         {
             return View();
         }

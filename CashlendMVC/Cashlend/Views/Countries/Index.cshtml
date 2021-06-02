@@ -1,0 +1,27 @@
+﻿@model Cashlend.Models.CountriesListViewModel
+
+@{
+    this.ViewData["Title"] = "Countries";
+}
+
+<h1>@this.ViewData["Title"]</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>CountryId</th>
+            <th>CountryName</th>
+            <th>Continent</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var country in this.Model.Countries)
+        {
+            <tr>
+                <td>@country.CountryId</td>
+                <td>@country.CountryName</td>
+                <td>@country.Continent</td>
+            </tr>
+        }
+    </tbody>
+</table>
