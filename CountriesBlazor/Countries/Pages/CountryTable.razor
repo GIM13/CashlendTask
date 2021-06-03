@@ -10,6 +10,7 @@
     <button class="btn btn-primary" @onclick="Previous">Previous</button>
     <button class="btn btn-primary" @onclick="Next">Next</button>
 </div>
+<br />
 
 @if (countries == null)
 {
@@ -20,18 +21,18 @@ else
     <table class="table">
         <thead>
             <tr>
-                <th><a class="btn btn-link" @onclick="SortById">Country Id</a></th>
-                <th><a class="btn btn-link" @onclick="SortByName">Country Name</a></th>
-                <th><a class="btn btn-link" @onclick="SortByContinent">Continent</a></th>
+                <th><a class="btn btn-link text-danger" @onclick="SortById">Country Id</a></th>
+                <th><a class="btn btn-link text-danger" @onclick="SortByName">Country Name</a></th>
+                <th><a class="btn btn-link text-danger" @onclick="SortByContinent">Continent</a></th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var country in countries)
+            @for (int i = start; i < end; i++)
             {
                 <tr>
-                    <td>@country.CountryId</td>
-                    <td>@country.CountryName</td>
-                    <td>@country.Continent</td>
+                    <td>@countries[i].CountryId</td>
+                    <td>@countries[i].CountryName</td>
+                    <td>@countries[i].Continent</td>
                 </tr>
             }
         </tbody>
@@ -43,9 +44,9 @@ else
 
     private string Result { get; set; }
 
-    private int pagesCount = 4;
+    private int start = 0;
 
-    private int pageSize = 4;
+    private int end = 4;
 
     private int flag = 0;
 
@@ -81,14 +82,12 @@ else
             CountryName = "Finland",
             Continent = "Europe"
         },
-
         new Country
         {
             CountryId = 6,
             CountryName = "Austria",
             Continent = "Europe"
         },
-
         new Country
         {
             CountryId = 7,
@@ -101,40 +100,53 @@ else
             CountryName = "Russia",
             Continent = "Europe"
         },
-
         new Country
         {
             CountryId = 9,
             CountryName = "Poland",
             Continent = "Europe"
         },
-
         new Country
         {
             CountryId = 10,
             CountryName = "Albania",
             Continent = "Europe"
         },
-
         new Country
         {
             CountryId = 11,
-            CountryName = "Czechia ",
+            CountryName = "Czechia",
             Continent = "Europe"
         },
-
         new Country
         {
             CountryId = 12,
             CountryName = "Hungary",
             Continent = "Europe"
         },
-
         new Country
         {
             CountryId = 13,
             CountryName = "Denmark",
             Continent = "Europe"
+        },
+        new Country
+        {
+            CountryId = 14,
+            CountryName = "Australia",
+            Continent = "Australia"
+        },
+        new Country
+        {
+            CountryId = 15,
+            CountryName = "Guyana",
+            Continent = "South America"
+        },
+        new Country
+        {
+            CountryId = 16,
+            CountryName = "Suriname",
+            Continent = "South America"
         },
     };
 
@@ -149,12 +161,30 @@ else
 
     private void Previous()
     {
+        start -= 4;
 
+        end -= 4;
+
+        if (start < 0 && end < 4)
+        {
+            start = 0;
+
+            end = 4;
+        }
     }
 
     private void Next()
     {
+        start += 4;
 
+        end += 4;
+
+        if (start > 12 && end > countries.Count)
+        {
+            start = 12;
+
+            end = countries.Count;
+        }
     }
 
     private void Search()
@@ -220,7 +250,6 @@ else
         {
             countries = countries
                .OrderByDescending(x => x.Continent)
-               .ThenBy(x => x.CountryName)
                .ToList();
 
             flag = 0;
