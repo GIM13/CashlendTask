@@ -1,0 +1,229 @@
+﻿@page "/countryTable"
+
+<h1 class="text-center">Countries</h1>
+<br />
+<input @bind="Input" />
+<button class="btn btn-primary" @onclick="Search">Search</button>
+<h4 class="text-center">@Result</h4>
+<br />
+<div class="text-center">
+    <button class="btn btn-primary" @onclick="Previous">Previous</button>
+    <button class="btn btn-primary" @onclick="Next">Next</button>
+</div>
+
+@if (countries == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th><a class="btn btn-link" @onclick="SortById">Country Id</a></th>
+                <th><a class="btn btn-link" @onclick="SortByName">Country Name</a></th>
+                <th><a class="btn btn-link" @onclick="SortByContinent">Continent</a></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var country in countries)
+            {
+                <tr>
+                    <td>@country.CountryId</td>
+                    <td>@country.CountryName</td>
+                    <td>@country.Continent</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private string Input { get; set; }
+
+    private string Result { get; set; }
+
+    private int pagesCount = 4;
+
+    private int pageSize = 4;
+
+    private int flag = 0;
+
+    private List<Country> countries = new List<Country>()
+{
+        new Country
+        {
+            CountryId = 1,
+            CountryName = "Botswana",
+            Continent = "Africa"
+        },
+        new Country
+        {
+            CountryId = 2,
+            CountryName = "Afghanistan",
+            Continent = "Asia"
+        },
+        new Country
+        {
+            CountryId = 3,
+            CountryName = "Azerbaijan",
+            Continent = "Asia"
+        },
+        new Country
+        {
+            CountryId = 4,
+            CountryName = "China",
+            Continent = "Asia"
+        },
+        new Country
+        {
+            CountryId = 5,
+            CountryName = "Finland",
+            Continent = "Europe"
+        },
+
+        new Country
+        {
+            CountryId = 6,
+            CountryName = "Austria",
+            Continent = "Europe"
+        },
+
+        new Country
+        {
+            CountryId = 7,
+            CountryName = "Bulgaria",
+            Continent = "Europe"
+        },
+        new Country
+        {
+            CountryId = 8,
+            CountryName = "Russia",
+            Continent = "Europe"
+        },
+
+        new Country
+        {
+            CountryId = 9,
+            CountryName = "Poland",
+            Continent = "Europe"
+        },
+
+        new Country
+        {
+            CountryId = 10,
+            CountryName = "Albania",
+            Continent = "Europe"
+        },
+
+        new Country
+        {
+            CountryId = 11,
+            CountryName = "Czechia ",
+            Continent = "Europe"
+        },
+
+        new Country
+        {
+            CountryId = 12,
+            CountryName = "Hungary",
+            Continent = "Europe"
+        },
+
+        new Country
+        {
+            CountryId = 13,
+            CountryName = "Denmark",
+            Continent = "Europe"
+        },
+    };
+
+    private class Country
+    {
+        public int CountryId { get; set; }
+
+        public string CountryName { get; set; }
+
+        public string Continent { get; set; }
+    }
+
+    private void Previous()
+    {
+
+    }
+
+    private void Next()
+    {
+
+    }
+
+    private void Search()
+    {
+        Country found = countries.Find(x => x.CountryName == Input);
+
+        Result = $"It's the country name: {@found.CountryName}*******" +
+                 $"It's the continent: {@found.Continent} *******" +
+                 $"It's the country ID: {@found.CountryId}";
+    }
+
+    private void SortById()
+    {
+        if (flag == 1)
+        {
+            countries = countries
+                .OrderBy(x => x.CountryId)
+                .ToList();
+
+            flag = 0;
+        }
+        else
+        {
+            countries = countries
+               .OrderByDescending(x => x.CountryId)
+               .ToList();
+
+            flag = 1;
+        }
+    }
+
+    private void SortByName()
+    {
+        if (flag == 0)
+        {
+            countries = countries
+                .OrderBy(x => x.CountryName)
+                .ToList();
+
+            flag = 1;
+        }
+        else
+        {
+            countries = countries
+               .OrderByDescending(x => x.CountryName)
+               .ToList();
+
+            flag = 0;
+        }
+    }
+
+    private void SortByContinent()
+    {
+        if (flag == 0)
+        {
+            countries = countries
+                .OrderBy(x => x.Continent)
+                .ToList();
+
+            flag = 1;
+        }
+        else
+        {
+            countries = countries
+               .OrderByDescending(x => x.Continent)
+               .ThenBy(x => x.CountryName)
+               .ToList();
+
+            flag = 0;
+        }
+    }
+}
